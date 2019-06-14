@@ -1,0 +1,208 @@
+```{r}
+
+#Installing Packages
+suppressWarnings({ ## Supressing Warning messages
+  suppressPackageStartupMessages({ ## Supressing startup messages
+    library(dplyr)
+    library(data.table)
+    library(ggplot2)
+    library(recommenderlab)
+    library(reshape2)
+    library(Matrix)
+  })
+})
+
+```
+
+#1) Reading Dataset
+
+```{r}
+#Importing datasets
+beer_data <- read.csv('./beer_data.csv',na.strings = "")
+print(dim(beer_data))
+
+#Checking for duplicates
+beer_data <- unique(beer_data)
+print(dim(beer_data))
+
+#Print summary
+summary(beer_data)
+```
+
+#2) Exploration- 
+
+### How are ratings distributed?
+```{r}
+ggplot(data = beer_data, aes(x = factor(review_overall))) + 
+  geom_bar() +
+  labs(title="No.of ratings given to beers", x="Rating", y="Frequency") +
+  theme(text = element_text(size=16),axis.text = element_text(size=16))
+```
+
+### Distribution of Average rating by user?
+```{r}
+x <- beer_data %>%
+  group_by(review_profilename) %>%
+  summarise(ratings_mean = mean(review_overall))
+##How are rating distributed
+ggplot(data = x, aes(x = ratings_mean)) + 
+  geom_histogram(bins = 10) +
+  labs(title="Average ratings given by a user", x="Rating", y="Frequency") +
+  theme(text = element_text(size=16),axis.text = element_text(size=16))
+```
+
+Most people rate beer highly. 
+
+### Distribution of nummber of rating given to a beer?
+```{r}
+beer_wise_count <- beer_data %>%
+  group_by(beer_beerid) %>%
+  summarise(rating_count = length(review_overall))
+
+summary(beer_wise_count)
+
+ggplot(data= beer_wise_count,aes(x=rating_count)) + 
+  geom_histogram(bins = 20) +
+  labs(title="Average number of ratings given to a beer", x="Rating count", y="Frequency") +
+  theme(text = element_text(size=16),axis.text = element_text(size=16))
+```
+
+### Distribution of average number of rating given by a user?
+```{r}
+review_profilename_count <- beer_data %>%
+  group_by(review_profilename) %>%
+  summarise(rating_count = length(review_overall))
+
+summary(review_profilename_count)
+
+ggplot(data= review_profilename_count,aes(x=rating_count)) + 
+  geom_histogram(bins = 20) +
+  labs(title="Average number of ratings given by a user", x="Rating count", y="Frequency") +
+  theme(text = element_text(size=16),axis.text = element_text(size=16))
+```
+
+
+### As we can see that only some beers have been rated many times while 75% of beer have less than 5 ratings. We will only use beers which atleast have more than 100 rating count. Let's check how much beers we would be convering.
+
+```{r}
+sprintf('Coverage : %s%%',round(sum(beer_wise_count$rating_count >= 100)*100 / nrow(beer_wise_count),2))
+```
+
+There are 2.53% of beers which have more than 100 ratings and we would be only interested in them. Recommender systems suffer with the problem of cold start and 100 is a good number to give appropriate recommendation. Let's filter our data for only these beers.
+
+```{r}
+beer_of_interest <- beer_wise_count[beer_wise_count$rating_count >= 100,'beer_beerid']
+
+beer_data_filter <- merge(beer_data, beer_of_interest, by = 'beer_beerid')
+
+sprintf('Drop in observations : %s%%',(round(100 - (nrow(beer_data_filter)*100/nrow(beer_data)),2)))
+```
+
+### As we can see by only taking 2.53% of beers recommendation we only loose 53.1% of rating data. Also filter users who have rated more than 10 ratings
+
+```{r}
+review_profilename_count <- beer_data_filter %>%
+  group_by(review_profilename) %>%
+  summarise(rating_count = length(review_overall))
+
+user_of_interest <- review_profilename_count[review_profilename_count$rating_count > 10,'review_profilename']
+
+beer_data_filter <- merge(beer_data_filter, user_of_interest, by = 'review_profilename')
+
+sprintf('Drop in observations : %s%%',(round(100 - (nrow(beer_data_filter)*100/nrow(beer_data)),2)))
+```
+
+### OVerall drop in data is 60.8%
+
+```{r}
+#Removing observations with no username
+beer_data_filter <- beer_data_filter[!is.na(beer_data_filter$review_profilename),]
+
+#This step will take a lot of time and memory
+beer_data_filter1 <- acast(beer_data_filter, review_profilename ~ beer_beerid,value.var = 'review_overall',fun.aggregate=mean)
+
+#Converting NaN to zero
+beer_data_filter1[is.na(beer_data_filter1) ] = 0
+
+## Making a sparse matrix
+rating_matrix <- Matrix(beer_data_filter1,sparse = TRUE)
+print(dim(rating_matrix))
+``` 
+
+### That means 4336 users and 1020 beers. Now to convert the sparse matrix to a real rating matrix.
+```{r}
+real_matrix <- new("realRatingMatrix", data = rating_matrix)
+```
+
+
+### Let's visualize similarity between users and items
+```{r}
+#First 10 users
+image(as.matrix(similarity(real_matrix[1:10,],method = 'cosine',which = 'users')))
+
+#First 10 items
+image(as.matrix(similarity(real_matrix[,1:10],method = 'cosine',which = 'items')))
+```
+
+Let's start by doing a split validation of 80% and 20% and build our UBCF & IBCF models. Given is setted as 10 as we filtered that each beer will have atleast 10 ratings and goodRating 3 which is mid of 1-5.
+
+## Split Validation
+```{r}
+# Making evaluation data set with 80 - 20 splot
+eval_sets <- evaluationScheme(real_matrix, method = "split",train = 0.8, given = 10,goodRating = 3)
+
+#Defining models to be evaluated
+models <- list(
+IBCF_cos = list(name = "IBCF",parameter = NULL),
+UBCF_cos = list(name = "UBCF",parameter = NULL)
+)
+
+#evaluation
+eval_results <- evaluate(x = eval_sets,method = models,n=seq(1,19,2))
+
+#Printing Model performance
+print(eval_results$IBCF_cos@results[[1]])
+print(eval_results$UBCF_cos@results[[1]])
+
+#Making ROC curve 
+plot(eval_results, annotate = 1:2, legend="topleft")
+```
+
+As we can see UBCF model do better than IBCF models.  
+
+## Cross validation - 5 Fold
+```{r}
+#Making evaluation data set with 5 fold
+eval_cv <- evaluationScheme(real_matrix, method="cross-validation",k=5,  given = 10, goodRating = 3)
+
+#Evaluation
+eval_results1 <- evaluate(x = eval_cv, method = models,n=seq(1,19,2))
+
+#Printing model performance
+print(eval_results1$IBCF_cos@results[[1]])
+print(eval_results1$UBCF_cos@results[[1]])
+
+#Making ROC curve
+plot(eval_results1, annotate = 1:2, legend="topleft")
+```
+
+
+As we can see UBCF model do better than IBCF models even in cross validation approach.
+
+## Making predictions using IBCF 
+```{r}
+#Building UBCF model
+Rec.model=Recommender(real_matrix,method="UBCF")
+
+#Making Predictions
+recom <- predict(Rec.model,1:dim(real_matrix)[1],data = real_matrix,n=5)
+
+# For cokes
+as(recom, "list")$cokes
+# For genog
+as(recom, "list")$genog
+# For giblet
+as(recom, "list")$giblet
+```
+
+
