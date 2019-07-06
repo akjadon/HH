@@ -17,7 +17,7 @@
 **Lesson 13 :** [Anomaly Detection](https://github.com/akjadon/HH/blob/master/Python/DS_tutorials_all/13.%20Anomaly%20Detection.ipynb)  
 **Lesson 14 :** [Support Vector Machines](https://github.com/akjadon/HH/blob/master/Python/DS_tutorials_all/14.%20Support%20Vector%20Machines.ipynb)  
 **Lesson 15 :** [Dealing with Imbalanced Classes](https://github.com/akjadon/HH/blob/master/Python/DS_tutorials_all/15.%20Dealing%20with%20Imbalanced%20Classes.ipynb)  
-**Lesson 16 :** [Ensemble Methods](https://github.com/zekelabs/akjadon/HH/blob/master/Python/DS_tutorials_all/16.%20Ensemble%20Methods.ipynb)  
+**Lesson 16 :** [Ensemble Methods](https://github.com/akjadon/HH/blob/master/Python/DS_tutorials_all/16.%20Ensemble%20Methods.ipynb)  
 
 
 ## Case Study of Classic ML Problems
