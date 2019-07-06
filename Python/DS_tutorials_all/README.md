@@ -2,7 +2,7 @@
 
 # Machine Learning Git Codebook
 
-**Lesson 1 :** [Introduction to Numpy](https://github.com/zekelabs/data-science-complete-tutorial/blob/master/1.%20NumPy.ipynb) [(Video)](https://www.edyoda.com/resources/videolisting/1263/)  
+**Lesson 1 :** [Introduction to Numpy](https://github.com/akjadon/HH/blob/master/Python/DS_tutorials_all/1.%20NumPy.ipynb) [(Video)](https://www.edyoda.com/resources/videolisting/1263/)  
 **Lesson 2 :** [Data Wrangling using Pandas](https://github.com/zekelabs/data-science-complete-tutorial/blob/master/2.%20Pandas%20for%20Machine%20Learning.ipynb)  
 **Lesson 3 :** [Plotting in Python](https://github.com/zekelabs/data-science-complete-tutorial/blob/master/3.%20Plotting.ipynb)  
 **Lesson 4 :** [Linear Models for Regression & Classification](https://github.com/zekelabs/data-science-complete-tutorial/blob/master/4.%20Linear%20Models%20for%20Classification%20%26%20Regression.ipynb)  
