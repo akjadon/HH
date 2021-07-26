@@ -1,13 +1,10 @@
 
-https://github.com/akjadon/HH/blob/master/Python/DS_tutorial_trn/5.Pandas%20Foundations/Chapter%201%20-%20Data%20ingestion%20%26%20inspection.py
+https://github.com/akjadon/HH/blob/master/Python/DS_tutorial_trn/2.Intermediate%20Python%20for%20Data%20Science/Chapter%201-Matplotlib.py
 
-https://github.com/akjadon/HH/blob/master/Python/DS_tutorial_trn/5.Pandas%20Foundations/Chapter%202%20-%20Exploratory%20data%20analysis.py
+data source for above -
+ https://github.com/akjadon/HH/tree/master/Python/DS_tutorial_trn/2.Intermediate%20Python%20for%20Data%20Science/Datasets
 
-Data Source for above -
-
-https://github.com/akjadon/HH/tree/master/Python/DS_tutorial_trn/5.Pandas%20Foundations/Datasets
-
-
+############
 
 https://github.com/akjadon/HH/blob/master/Python/DS_tutorial_trn/4.Merging%20DataFrames%20with%20pandas/Chapter%201%20-%20Preparing%20data.py
 
@@ -25,3 +22,12 @@ data source for above exercises -
 
 https://github.com/akjadon/HH/tree/master/Python/DS_tutorial_trn/4.Merging%20DataFrames%20with%20pandas/Datasets
 
+#############
+
+https://github.com/akjadon/HH/blob/master/Python/DS_tutorial_trn/5.Pandas%20Foundations/Chapter%201%20-%20Data%20ingestion%20%26%20inspection.py
+
+https://github.com/akjadon/HH/blob/master/Python/DS_tutorial_trn/5.Pandas%20Foundations/Chapter%202%20-%20Exploratory%20data%20analysis.py
+
+Data Source for above -
+
+https://github.com/akjadon/HH/tree/master/Python/DS_tutorial_trn/5.Pandas%20Foundations/Datasets
