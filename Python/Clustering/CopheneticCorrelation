@@ -1,0 +1,72 @@
+hc_df = scaled_dataframe.copy()
+
+#############################################################################################################
+
+# list of distance metrics
+distance_metrics = ["euclidean", "chebyshev", "mahalanobis", "cityblock"]
+
+# list of linkage methods
+linkage_methods = ["single", "complete", "average", "weighted"]
+
+high_cophenet_corr = 0
+high_dm_lm = [0, 0]
+
+for dm in distance_metrics:
+    for lm in linkage_methods:
+        Z = linkage(hc_df, metric=dm, method=lm)
+        c, coph_dists = cophenet(Z, pdist(hc_df))
+        print(
+            "Cophenetic correlation for {} distance and {} linkage is {}.".format(
+                dm.capitalize(), lm, c
+            )
+        )
+        if high_cophenet_corr < c:
+            high_cophenet_corr = c
+            high_dm_lm[0] = dm
+            high_dm_lm[1] = lm
+
+########################################################################################3
+
+# list of linkage methods
+linkage_methods = ["single", "complete", "average", "centroid", "ward", "weighted"]
+
+high_cophenet_corr = 0
+high_dm_lm = [0, 0]
+
+for lm in linkage_methods:
+    Z = linkage(hc_df, metric="euclidean", method=lm)
+    c, coph_dists = cophenet(Z, pdist(hc_df))
+    print("Cophenetic correlation for {} linkage is {}.".format(lm, c))
+    if high_cophenet_corr < c:
+        high_cophenet_corr = c
+        high_dm_lm[0] = "euclidean"
+        high_dm_lm[1] = lm
+        
+ ####################################################################################
+ 
+ # list of linkage methods
+linkage_methods = ["single", "complete", "average", "centroid", "ward", "weighted"]
+
+# lists to save results of cophenetic correlation calculation
+compare_cols = ["Linkage", "Cophenetic Coefficient"]
+compare = []
+
+# to create a subplot image
+fig, axs = plt.subplots(len(linkage_methods), 1, figsize=(15, 30))
+
+# We will enumerate through the list of linkage methods above
+# For each linkage method, we will plot the dendrogram and calculate the cophenetic correlation
+for i, method in enumerate(linkage_methods):
+    Z = linkage(hc_df, metric="euclidean", method=method)
+
+    dendrogram(Z, ax=axs[i])
+    axs[i].set_title(f"Dendrogram ({method.capitalize()} Linkage)")
+
+    coph_corr, coph_dist = cophenet(Z, pdist(hc_df))
+    axs[i].annotate(
+        f"Cophenetic\nCorrelation\n{coph_corr:0.2f}",
+        (0.80, 0.80),
+        xycoords="axes fraction",
+    )
+
+    compare.append([method, coph_corr])
