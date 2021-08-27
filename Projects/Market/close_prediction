@@ -1,0 +1,15 @@
+Data input -
+
+https://www.kaggle.com/rohanrao/nifty50-stock-market-data
+
+steps to follow 
+   1.import the data
+   2.define the day closing as target variable
+   3.while defining take one day lag so that target variable will become next day closing
+   4.perform EDA
+   5.perform clustering
+   6.perform PCA
+   7.Do the train and test split
+   7.fit th regression model
+   8.calculate the validation metrics for both train and test
+   9.analyze the output
