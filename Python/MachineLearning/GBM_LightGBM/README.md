@@ -10,4 +10,5 @@ print('accuracy is ',accuracy_score(y_pred,y_test))
 
 
 
+
 for heart disease project link :: https://www.kaggle.com/vincentlugat/heart-disease-analysis-and-prediction
