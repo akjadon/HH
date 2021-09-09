@@ -11,3 +11,7 @@ print(classification_report(y_test, y_pred))
 print(confusion_matrix(y_test, y_pred))
 # Accuracy score
 print('accuracy is',accuracy_score(y_pred,y_test))
+
+### Code
+Adaboost algorithm: <br />
+<img src="https://github.com/akjadon/HH/blob/master/Python/MachineLearning/images/naivebase.PNG" width="600"> <br />
