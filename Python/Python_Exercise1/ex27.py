@@ -12,13 +12,13 @@ def words_length_one(words):
 
 # Using the higher order function map()
 def words_length_two(words):
-  return map(len, words)
+  return list(map(len, words))
   
 #  Using list comprehensions
 def words_length_three(words):
   return [len(word) for word in words]
 
 #test
-print words_length_one(['lol', 'this', 'is', 'funny'])
-print words_length_two(['lol', 'this', 'is', 'NOT', 'funny'])
-print words_length_three(['or', 'is', 'it', '?'])
+print(words_length_one(['lol', 'this', 'is', 'funny']))
+print(words_length_two(['lol', 'this', 'is', 'NOT', 'funny']))
+print(words_length_three(['or', 'is', 'it', '?']))

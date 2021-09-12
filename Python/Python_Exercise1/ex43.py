@@ -30,7 +30,7 @@ def anagram_finder(file_name):
 	# We then get the words length of the anagrams with the most words in 
 	# them
 	longestana = 0
-	for anagram, anawords in anadict.items():
+	for anagram, anawords in list(anadict.items()):
 		if len(anawords) > longestana:
 			longestana = len(anawords)
 
@@ -38,9 +38,9 @@ def anagram_finder(file_name):
 	# longestana = max(map(lambda x: len(anadict[x]), anadict))
 
 	# And finally, we print only the anagrams with the most words in them
-	for anagram, anawords in anadict.items():
+	for anagram, anawords in list(anadict.items()):
 		if len(anawords) > longestana-1:
-			print anagram, anawords
+			print(anagram, anawords)
 
 #test
 anagram_finder('unixdict.txt')

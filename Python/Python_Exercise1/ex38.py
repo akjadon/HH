@@ -8,9 +8,9 @@ def average_word_length(file_name):
 	with open(file_name, 'r') as f:
 		for line in f:
 			# Clean each line of punctuations, we want words only
-			line = filter(lambda x: x not in punctuation, line)
+			line = [x for x in line if x not in punctuation]
 			# We get only the length of the words
-			words = map(len, line.split())
-	print sum(words) / len(words)
+			words = list(map(len, line.split()))
+	print(sum(words) / len(words))
 
 average_word_length('hapax.txt')

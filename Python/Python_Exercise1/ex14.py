@@ -6,6 +6,6 @@ def words_length(lst):
   return lenlist
 
 #test
-print words_length(['Hello', 'world!'])
-print words_length(['Python', 'is', 'awesome!'])
-print words_length(['You', 'said', 'it', 'bro!'])
+print(words_length(['Hello', 'world!']))
+print(words_length(['Python', 'is', 'awesome!']))
+print(words_length(['You', 'said', 'it', 'bro!']))

@@ -10,7 +10,7 @@ dict = {"merry":"god", "christmas":"jul", "and":"och",\
         "happy":"gott", "new":"nytt", "year":"år"}
 
 def translate(words):
-	return map(lambda x: dict[x.lower()], words)
+	return [dict[x.lower()] for x in words]
 
 #test
-print translate(['Merry', 'christmas', 'and', 'happy', 'new', 'year'])
+print(translate(['Merry', 'christmas', 'and', 'happy', 'new', 'year']))

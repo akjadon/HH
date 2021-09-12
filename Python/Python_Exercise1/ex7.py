@@ -6,5 +6,5 @@ def reverse(str):
   return str[::-1]
 
 #test
-print reverse("I am testing")
-print reverse("It's cool, isn't it?")
+print(reverse("I am testing"))
+print(reverse("It's cool, isn't it?"))

@@ -69,7 +69,7 @@ def poke_names(file_name):
 		current_series = []
 
 	# Print the longest series
-	print longest_series
+	print(longest_series)
 
 #test
 poke_names('poke_names.txt')

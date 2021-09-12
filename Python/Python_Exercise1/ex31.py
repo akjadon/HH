@@ -1,5 +1,6 @@
 """Implement the higher order functions map(), filter() and reduce(). 
 (They are built-in but writing them yourself may be a good exercise.)"""
+from functools import reduce
 
 # My solutions are based on the definitions from the python help function
 # >> help('map')
@@ -50,6 +51,6 @@ def reduce(function, sequence, initial=None):
   return result
 
 #test
-print map(lambda x: x * 2, [1,2,3,4])
-print filter(lambda x: x.endswith('in'), ('lapin', 'cretin', 'ah', 'oui'))
-print reduce(lambda x, y: x+y, [1, 2, 3, 4, 5], 5)
+print([x * 2 for x in [1,2,3,4]])
+print([x for x in ('lapin', 'cretin', 'ah', 'oui') if x.endswith('in')])
+print(reduce(lambda x, y: x+y, [1, 2, 3, 4, 5], 5))

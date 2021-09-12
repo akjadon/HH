@@ -9,6 +9,6 @@ def find_longest_word(lst):
   return len(longest)
 
 #test
-print find_longest_word(['hello', 'world', 'Python'])
-print find_longest_word(['Live', 'laugh', 'love'])
-print find_longest_word(['I', 'found', 'Haiti'])
+print(find_longest_word(['hello', 'world', 'Python']))
+print(find_longest_word(['Live', 'laugh', 'love']))
+print(find_longest_word(['I', 'found', 'Haiti']))

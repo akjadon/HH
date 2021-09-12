@@ -52,5 +52,5 @@ def caesar_cypher(str):
   return result
 
 #test
-print caesar_cypher('Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!')
-print caesar_cypher('This is funny!')
+print(caesar_cypher('Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!'))
+print(caesar_cypher('This is funny!'))

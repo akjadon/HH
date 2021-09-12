@@ -19,5 +19,5 @@ def is_pangram(str):
     return False
 
 #test
-print is_pangram("The quick brown fox jumps over the lazy dog.")
-print is_pangram("Obviously not a pangram")
+print(is_pangram("The quick brown fox jumps over the lazy dog."))
+print(is_pangram("Obviously not a pangram"))

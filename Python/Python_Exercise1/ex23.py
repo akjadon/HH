@@ -13,4 +13,4 @@ def correct(str):
   return makespace
 
 #test
-print correct('This   is        very funny  and    cool.Indeed!')
+print(correct('This   is        very funny  and    cool.Indeed!'))

@@ -12,10 +12,10 @@ def hapax(file_name):
 			words += line.lower().split()
 
 	# Filter the hapaxes from the rest
-	hapaxes = filter(lambda x: words.count(x) == 1, words)
+	hapaxes = [x for x in words if words.count(x) == 1]
 	
 	# Return what we need
 	return hapaxes
 
 #test
-print hapax('hapax.txt')
+print(hapax('hapax.txt'))

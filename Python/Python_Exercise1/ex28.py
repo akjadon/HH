@@ -2,7 +2,7 @@
 returns the length of the longest one. Use only higher order functions."""
 
 def find_longest_word(words):
-  return max(map(len, words))
+  return max(list(map(len, words)))
 
 #test
-print find_longest_word(['This', 'is', 'unacceptable'])
+print(find_longest_word(['This', 'is', 'unacceptable']))

@@ -34,9 +34,9 @@ def lingo(words):
         # 2: correct letter and position
         cenc = [(int(guess[i] == hidden[i])) + int(guess[i] in hidden) for i in range(5)] 
         # Enclose the letter with appropriate symbols using sym_map
-        print "".join([sym_map[cenc[i]]%guess[i] for i in range(5)])
+        print("".join([sym_map[cenc[i]]%guess[i] for i in range(5)]))
         return hidden != guess
-        print
+        print()
 
     if len(hidden) == 5:
         is_wrong=True
@@ -44,9 +44,9 @@ def lingo(words):
         while is_wrong:
             # If user provides a word longer than 5 characters, we
             # truncate it
-            guess = raw_input()[:5]
+            guess = input()[:5]
             is_wrong = lingo_finder(guess.lower())
-        print "You guessed it!"
+        print("You guessed it!")
 
 
 # Test
