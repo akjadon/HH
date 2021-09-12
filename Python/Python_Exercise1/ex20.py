@@ -12,4 +12,4 @@ def translate(lst):
   return [dictionary[w.lower()] for w in lst if w.lower() in dictionary]
 
 #test
-print translate(['Merry', 'christmas', 'and', 'happy', 'new', 'year', 'mom'])
+print(translate(['Merry', 'christmas', 'and', 'happy', 'new', 'year', 'mom']))

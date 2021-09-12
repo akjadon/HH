@@ -27,8 +27,8 @@ def make_ing_form(verb):
     return verb+'ing' 
 
 #test
-print make_ing_form('lie')
-print make_ing_form('see') # I know. Doesn't work. It's an exception
-print make_ing_form('move')
-print make_ing_form('hug')
-print make_ing_form('touch')
+print(make_ing_form('lie'))
+print(make_ing_form('see')) # I know. Doesn't work. It's an exception
+print(make_ing_form('move'))
+print(make_ing_form('hug'))
+print(make_ing_form('touch'))

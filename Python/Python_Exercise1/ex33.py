@@ -8,17 +8,17 @@ the output should include the pair "stressed desserts". Note, by the way,
 that each pair by itself forms a palindrome!"""
 
 import string
-file_name = raw_input('Enter file name (ex. semordnilaps.txt)> ')
+file_name = input('Enter file name (ex. semordnilaps.txt)> ')
 unwanted = string.punctuation + ' '
 
 def clean(str):
-  cleaned_str = filter(lambda x: x not in unwanted, str.rstrip().lower())
+  cleaned_str = [x for x in str.rstrip().lower() if x not in unwanted]
   return cleaned_str
 
 found = []
 with open(file_name, 'r') as f:
   for line in f:
     if clean(line)[::-1] in found:
-      print clean(line), clean(line)[::-1]
+      print(clean(line), clean(line)[::-1])
     else:
       found.append(clean(line))

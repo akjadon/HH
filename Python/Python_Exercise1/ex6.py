@@ -16,5 +16,5 @@ def multiply(lst):
   return result
 
 #test
-print sum([1,2,3,4])
-print multiply([1,2,3,4])
+print(sum([1,2,3,4]))
+print(multiply([1,2,3,4]))

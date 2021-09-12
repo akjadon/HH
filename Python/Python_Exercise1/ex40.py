@@ -36,12 +36,12 @@ def anagram(word_list, subject):
 			continue
 
 	# The game
-	print '%s word anagram: %s' % (subject.capitalize(), ana)
+	print('%s word anagram: %s' % (subject.capitalize(), ana))
 	while True:
-		print 'Guess the %s word!' % subject
-		guess = raw_input()
+		print('Guess the %s word!' % subject)
+		guess = input()
 		if guess == w:
-			print 'Correct!'
+			print('Correct!')
 			break
 
 #test

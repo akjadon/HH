@@ -22,7 +22,7 @@ def make_3sg_form(verb):
     return verb+'s'
 
 #test
-print make_3sg_form('try')
-print make_3sg_form('brush')
-print make_3sg_form('run')
-print make_3sg_form('fix')
+print(make_3sg_form('try'))
+print(make_3sg_form('brush'))
+print(make_3sg_form('run'))
+print(make_3sg_form('fix'))

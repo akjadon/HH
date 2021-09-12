@@ -8,8 +8,8 @@ histogram([4, 9, 7]) should print the following:
 
 def histogram(lst):
   for n in lst:
-    print n * "*"
-  print 10 * "-" # Just to add some space between each test
+    print(n * "*")
+  print(10 * "-") # Just to add some space between each test
 
 #test
 histogram([4,9,7])

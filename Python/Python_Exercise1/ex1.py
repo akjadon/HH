@@ -10,5 +10,5 @@ def max(num1, num2):
     return num2
 
 #test
-print max(3, 5)
-print max(10, 6)
+print(max(3, 5))
+print(max(10, 6))

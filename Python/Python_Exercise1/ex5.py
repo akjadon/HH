@@ -20,5 +20,5 @@ def robberlang(str):
   return result
 
 #test
-print robberlang("This is kinda fun")
-print robberlang("I Think YoU Might BE righT!")
+print(robberlang("This is kinda fun"))
+print(robberlang("I Think YoU Might BE righT!"))

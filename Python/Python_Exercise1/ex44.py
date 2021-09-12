@@ -31,9 +31,9 @@ def brackets(n):
 
 	# If after removing all pairs of brackets the string is still not empty
 	if len(result) > 0:
-		print bracket_string, 'NOT OK'
+		print(bracket_string, 'NOT OK')
 	else:
-		print bracket_string, 'OK'
+		print(bracket_string, 'OK')
 
 #test
 brackets(3)

@@ -10,6 +10,6 @@ def length(str):
   return count
 
 #test
-print length("Hello, world!")
-print length("Nick was here.")
-print length("Cool")
+print(length("Hello, world!"))
+print(length("Nick was here."))
+print(length("Cool"))

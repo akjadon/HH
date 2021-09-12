@@ -14,6 +14,7 @@ of the list. Print the words to the screen in the above fashion."""
 
 import re
 from collections import defaultdict
+from functools import reduce
 
 # I'm still not sure if this is the best solution.
 # But I think it does what the problem asks for :/
@@ -60,13 +61,13 @@ def alternade_finder(file_name):
 						foundalternades[word].append(smallerwordodd)
 
 	# For each word in the dictionary
-	for word, alternades in foundalternades.items():
+	for word, alternades in list(foundalternades.items()):
 		# Make a string out of all the alternades
 		alt = reduce(lambda x, y: x + y, alternades)
 		# If all the letters in the word have been used to create all
 		# the alternades, print this word and its alternades
 		if sorted(alt) == sorted(word):
-			print '"%s": makes %s' % (word, alternades)
+			print('"%s": makes %s' % (word, alternades))
 
 #test
 alternade_finder('unixdict.txt')

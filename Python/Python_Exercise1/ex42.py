@@ -50,7 +50,7 @@ def sentence_splitter(file_name):
  	# Finally, we do the same after every '?'
  	sentences = re.sub(r'\?\s', '?\n', sentences)
 
-	print sentences
+	print(sentences)
 
 #test
 sentence_splitter('splitter.txt')

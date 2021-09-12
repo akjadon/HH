@@ -14,5 +14,5 @@ def char_freq(str):
       
 
 #test
-print char_freq("abbabcbdbabdbdbabababcbcbab")
-print char_freq("hello")
+print(char_freq("abbabcbdbabdbdbabababcbcbab"))
+print(char_freq("hello"))

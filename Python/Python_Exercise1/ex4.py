@@ -11,6 +11,6 @@ def vornot(str):
     return False
 
 #test
-print vornot('e')
-print vornot('1')
-print vornot('z')
+print(vornot('e'))
+print(vornot('1'))
+print(vornot('z'))
