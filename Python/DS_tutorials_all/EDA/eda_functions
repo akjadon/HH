@@ -83,3 +83,78 @@ def labeled_barplot(data, feature, perc=False, n=None):
         )  # annotate the percentage
 
     plt.show()  # show the plot
+    
+    
+def stacked_barplot(data, predictor, target):
+    """
+    Print the category counts and plot a stacked bar chart
+
+    data: dataframe
+    predictor: independent variable
+    target: target variable
+    """
+    count = data[predictor].nunique()
+    sorter = data[target].value_counts().index[-1]
+    tab1 = pd.crosstab(data[predictor], data[target], margins=True).sort_values(
+        by=sorter, ascending=False
+    )
+    print(tab1)
+    print("-" * 120)
+    tab = pd.crosstab(data[predictor], data[target], normalize="index").sort_values(
+        by=sorter, ascending=False
+    )
+    tab.plot(kind="bar", stacked=True, figsize=(count + 5, 5))
+    plt.legend(
+        loc="lower left", frameon=False,
+    )
+    plt.legend(loc="upper left", bbox_to_anchor=(1, 1))
+    plt.show()
+
+
+### function to plot distributions wrt target
+def distribution_plot_wrt_target(data, predictor, target):
+
+    fig, axs = plt.subplots(2, 2, figsize=(12, 10))
+
+    target_uniq = data[target].unique()
+
+    axs[0, 0].set_title("Distribution of target for target=" + str(target_uniq[0]))
+    sns.histplot(
+        data=data[data[target] == target_uniq[0]],
+        x=predictor,
+        kde=True,
+        ax=axs[0, 0],
+        color="teal",
+        stat="density",
+    )
+
+    axs[0, 1].set_title("Distribution of target for target=" + str(target_uniq[1]))
+    sns.histplot(
+        data=data[data[target] == target_uniq[1]],
+        x=predictor,
+        kde=True,
+        ax=axs[0, 1],
+        color="orange",
+        stat="density",
+    )
+
+    axs[1, 0].set_title("Boxplot w.r.t target")
+    sns.boxplot(data=data, x=target, y=predictor, ax=axs[1, 0], palette="gist_rainbow")
+
+    axs[1, 1].set_title("Boxplot (without outliers) w.r.t target")
+    sns.boxplot(
+        data=data,
+        x=target,
+        y=predictor,
+        ax=axs[1, 1],
+        showfliers=False,
+        palette="gist_rainbow",
+    )
+
+    plt.tight_layout()
+    plt.show()
+    
+### appling functions example
+labeled_barplot(df, "Geography", perc=True)
+stacked_barplot(df, 'Geography', 'Exited')
+distribution_plot_wrt_target(df, "Age", "Exited")
