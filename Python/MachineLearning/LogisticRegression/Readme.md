@@ -1,3 +1,19 @@
+
+In logistic regression, the cost function is a measure of the difference between the predicted probability of the outcome and the actual outcome. The goal of the logistic regression model is to minimize this cost function, in order to find the best possible coefficients for the predictor variables.
+
+The most commonly used cost function in logistic regression is the log loss or cross-entropy loss. The log loss cost function is defined as the negative log-likelihood of the true labels given the predicted probabilities. Mathematically, it can be represented as:
+
+**-log(L) = - (y * log(p) + (1-y) * log(1-p))**
+
+Where p is the predicted probability of the outcome, y is the actual outcome (0 or 1), and L is the likelihood of the observed data.
+
+This cost function is chosen because it penalizes heavily the predictions that are confident but incorrect. It's a convex function, which means that there is only one global minimum and it can be optimized using gradient descent or other optimization algorithms.
+
+
+
+
+Regenerate response
+
 ## Classification algorithms
 
 ### [Logistic regression with Titanic data](https://github.com/tirthajyoti/Machine-Learning-with-Python/blob/master/Classification/Logistic_Regression_Classification.ipynb)
