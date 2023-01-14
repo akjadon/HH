@@ -1,0 +1,1 @@
+This technique is used to reduce the dimensionality of a dataset by identifying the directions of maximum variance in the data and projecting it onto a lower-dimensional subspace.
