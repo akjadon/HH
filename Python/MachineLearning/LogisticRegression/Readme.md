@@ -9,10 +9,15 @@ Where p is the predicted probability of the outcome, y is the actual outcome (0 
 
 This cost function is chosen because it penalizes heavily the predictions that are confident but incorrect. It's a convex function, which means that there is only one global minimum and it can be optimized using gradient descent or other optimization algorithms.
 
+#####################################################################################
+
+**cross-entropy can be described by the following formula,**
+
+![image](https://user-images.githubusercontent.com/47466906/212528555-5c576f26-4b58-4ff6-8d09-3f28e811bbe8.png)
+
+####################################################################################
 
 
-
-Regenerate response
 
 ## Classification algorithms
 
