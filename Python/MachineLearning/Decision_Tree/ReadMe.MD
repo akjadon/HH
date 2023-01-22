@@ -79,3 +79,11 @@ plt.ylabel('Estimated Salary')
 plt.legend()
 plt.show()
 ```
+
+
+
+
+
+## Note : How does continuous Variable get split
+
+In a decision tree, continuous variables are typically split by finding the optimal split point that maximizes the reduction in impurity (such as Gini impurity or entropy). This is done by evaluating all possible split points and selecting the one that results in the largest decrease in impurity. The data is then split into two groups based on the chosen split point, and the process is repeated recursively on each group until a stopping criterion is met (such as a minimum number of samples per leaf or a maximum tree depth)
