@@ -87,3 +87,29 @@ plt.show()
 ## Note : How does continuous Variable get split
 
 In a decision tree, continuous variables are typically split by finding the optimal split point that maximizes the reduction in impurity (such as Gini impurity or entropy). This is done by evaluating all possible split points and selecting the one that results in the largest decrease in impurity. The data is then split into two groups based on the chosen split point, and the process is repeated recursively on each group until a stopping criterion is met (such as a minimum number of samples per leaf or a maximum tree depth)
+
+
+
+
+
+
+## There are several different criteria that can be used to determine the best split point when constructing a decision tree:
+
+01-Gini impurity: This measure calculates the probability of a randomly chosen sample being classified incorrectly if it were randomly labeled according to the class distribution in the current node.
+
+02-Entropy: This measure calculates the disorder or randomness of the class distribution in the current node.
+
+03-Misclassification Error: This measure calculates the number of misclassified samples in the current node.
+
+04-Information gain: This measure calculates the reduction in entropy after a split is made.
+
+05-Gain ratio : This measure tries to resolve the issue of bias towards variables with many outcomes. It is the ratio of information gain to the intrinsic information of the split.
+
+06-Gini index: This measure calculates the probability of a sample falling into the wrong group if it were randomly assigned a class according to the group proportions in the current node.
+
+
+
+
+
+
+
