@@ -31,7 +31,7 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 ```
-### Fitting Random Forest to the Training set
+### Fitting GBM to the Training set
 ```python
 from sklearn.ensemble import GradientBoostingClassifier
 Model=GradientBoostingClassifier()
